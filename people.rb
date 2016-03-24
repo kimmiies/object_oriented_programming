@@ -26,3 +26,13 @@ end
 
 chris = Instructor.new("Chris")
 chris.greeting
+
+cristina = Student.new("Cristina")
+cristina.greeting
+
+chris.teach
+cristina.learn
+
+cristina.teach
+
+#this does not work because the teach method is undefined for the Student class. This method belongs to the instructor class.
