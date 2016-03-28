@@ -10,15 +10,13 @@ class Rover
     @direction = direction
   end
 
-#not sure if the parameters need to include default values or not
-
   def read_instruction
 
-  instructions = gets.chomp
-  instructions = instructions.upcase
-  instructions = instructions.split("")
+    instructions = gets.chomp
+    instructions = instructions.upcase
+    instructions = instructions.split("")
 
-  instructions.each do |value|
+      instruction.each do |value|
     if value == "M"
       self.move
     elsif value == "R"
@@ -29,26 +27,21 @@ class Rover
       puts "HELP ME!!! IM STUCK ON MARS!"
     end
   end
+end
 
 #call these new methods on itself (the rover)
 #Instead of one turn method that accepts a value, can we have two turn methods? leftturn & rightturn
-#getting this error `block in read_instruction': undefined method `leftturn'
 
   def move
     if @direction == "N"
       self.y_coordinate = @y_coordinate + 1
-
 #calling the y_coordinate method on itself (the rover) and reassigning it to @y_coordinate + 1
-
     elsif @direction == "E"
       self.x_coordinate = @x_coordinate + 1
-
     elsif @direction == "S"
       self.y_coordinate = @y_coordinate - 1
-
     elsif @direction == "W"
       self.x_coordinate = @x_coordinate + 1
-
     else
      puts "HELP IM STUCK ON MARS!"
    end
@@ -56,17 +49,14 @@ class Rover
 
   def leftturn
     if @direction == "N"
-      self.direction = "W"
-
-#calling the define method on itself (the rover) and reassigning it's value
-#is this properly reassigning it?
-
+      @direction = "W"
+#rewritten! instead of self.direction = "W". not sure if @direction = "W" still reassigns it
     elsif @direction == "W"
-      self.direction = "S"
+      @direction = "S"
     elsif @direction == "S"
-      self.direction = "E"
+      @direction = "E"
     elsif @direction == "E"
-      self.direction = "N"
+      @direction = "N"
     else
      puts "HELP IM STUCK ON MARS!"
    end
@@ -74,20 +64,20 @@ class Rover
 
   def rightturn
     if @direction == "N"
-      self.direction = "E"
+      @direction = "E"
     elsif @direction == "E"
-      self.direction = "S"
+      @direction = "S"
     elsif @direction == "S"
-      self.direction = "W"
+      @direction = "W"
     elsif @direction == "W"
-      self.direction = "N"
+      @direction = "N"
     else
      puts "HELP IM STUCK ON MARS!"
    end
   end
 
-end
-end
+    def output
+      puts "x_coordinate: #{@x_coordinate}\ny_coordinate: #{@y_coordinate}\ndirection: #{@direction}"
+    end
 
-rover_one = Rover.new(9,9,"S")
-rover_one.read_instruction
+end
