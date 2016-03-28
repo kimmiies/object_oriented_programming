@@ -10,13 +10,13 @@ class Rover
     @direction = direction
   end
 
-  def read_instruction
+  def read_instructions
 
     instructions = gets.chomp
     instructions = instructions.upcase
     instructions = instructions.split("")
 
-      instruction.each do |value|
+      instructions.each do |value|
     if value == "M"
       self.move
     elsif value == "R"
@@ -34,14 +34,21 @@ end
 
   def move
     if @direction == "N"
-      self.y_coordinate = @y_coordinate + 1
-#calling the y_coordinate method on itself (the rover) and reassigning it to @y_coordinate + 1
+      @y_coordinate += 1
+#I guess this increments the y_coordinate, reassigns it and stores it as an instance variable
+
+#previously wrote that out the long way:
+      #self.y_coordinate = @y_coordinate + 1
+
     elsif @direction == "E"
-      self.x_coordinate = @x_coordinate + 1
+      @x_coordinate += 1
+      #self.x_coordinate = @x_coordinate + 1
     elsif @direction == "S"
-      self.y_coordinate = @y_coordinate - 1
+      @y_coordinate -= 1
+      #self.y_coordinate = @y_coordinate - 1
     elsif @direction == "W"
-      self.x_coordinate = @x_coordinate + 1
+      @x_coordinate -= 1
+      #self.x_coordinate = @x_coordinate - 1
     else
      puts "HELP IM STUCK ON MARS!"
    end
@@ -81,3 +88,7 @@ end
     end
 
 end
+
+rover_one = Rover.new(0,0,"N")
+rover_one.read_instructions
+rover_one.output
