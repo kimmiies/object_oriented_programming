@@ -7,12 +7,16 @@ class Rover
     @direction = direction
   end
 
-  def read_instruction(instructions) #arguement. it needs instructions
+  def read_instruction #arguement. it needs instructions
 #loop , iterating through each value of the instructions.
 #later when you get the instructions (gets.chomp) is when you can convert it to any array
 #can convert outside the class
-instructions.each do |value|
 
+  instructions = gets
+  instructions = instructions.upcase #reassign, why reassign
+  instructions = instructions.split("") #reassign instructions
+
+  instructions.each do |value|
     if value == "M"
       self.move
     elsif value == "R"
@@ -22,19 +26,57 @@ instructions.each do |value|
     else
       puts "HELP ME!!! IM STUCK ON MARS!"
     end
-
   end
 
-  #is this if statement set up correctly?
-  #does it only have to delegate to more specific behaviour
+
+  def move
+    if self.direction == "N"
+      self.y_coordinate = y_coordinate + 1
+
+    elsif self.direction == "E"
+      self.x_coordinate = x_coordinate + 1
+
+    elsif self.direction == "S"
+      self.y_coordinate = y_coordinate - 1
+
+    elsif self.direction == "W"
+      self.x_coordinate = x_coordinate + 1
+
+    else
+     puts "HELP IM STUCK ON MARS!"
+
+    end
+
+  def turn("L")
+    if self.direction == "N"
+      self.direction == "W"
+    elsif self.direction == "W"
+      self.direction == "S"
+    elsif self.direction == "S"
+      self.direction == "E"
+    elsif self.direction == "E"
+      self.direction == "N"
+    else
+     puts "HELP IM STUCK ON MARS!"
+  end
+
+  def turn("R")
+    if self.direction == "N"
+      self.direction == "E"
+    elsif self.direction == "E"
+      self.direction == "S"
+    elsif self.direction == "S"
+      self.direction == "W"
+    elsif self.direction == "W"
+      self.direction == "N"
+    else
+     puts "HELP IM STUCK ON MARS!"
+  end
 
 
-
-  #def turn
-  #end
+  end
 
 end
 
 rover_one = Rover.new(9,5,"S")
-
-rover_one.read_instruction
+puts "(#{x_coordinate} #{y_coordinate}, #{direction})"
